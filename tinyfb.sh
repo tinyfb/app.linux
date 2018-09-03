@@ -1,5 +1,9 @@
 #!/bin/bash
 
+JAVA_VER=$(java -version 2>&1 | sed -n ';s/.* version "\(.*\)\.\(.*\)\..*"/\1\2/p;')
+
+[ "$JAVA_VER" -ge 18 ] && echo "ok, java is 1.8 or newer" || echo "it's too old..."
+
 jav=$(readlink -f $(which java))
 
 javPath=${jav%????????????}
